@@ -1,0 +1,13 @@
+-main ApplicationMain 
+-lib flixel
+-lib openfl
+-cp source
+-D tools=1.2.9
+-D FLX_NO_DEBUG
+-D FLX_NO_SOUND_TRAY
+-D web
+-swf-version 11.2
+-swf export/flash/bin/Runner.swf
+-swf-header 800:512:60:FFFFFF
+-cp export/flash/haxe
+#--remap nme:flash
