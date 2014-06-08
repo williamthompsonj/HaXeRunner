@@ -23,7 +23,7 @@ class CreditsState extends FlxState
 	{
 		// background image
 		background = new FlxSprite();
-		background.loadGraphic("assets/background.png", false, true, 1024, 512);
+		background.loadGraphic("assets/background.png", false, 1024, 512);
 		background.x = (FlxG.width - 1024) * .5;
 		background.frame = background.framesData.frames[0];
 		add(background);
@@ -56,7 +56,7 @@ class CreditsState extends FlxState
 		
 		backBtn = new FlxButton(0, 200+attrib.height, "Back", goBack);
 		backBtn.label.size = 30;
-		backBtn.loadGraphic("assets/buttons.png", false, false, 190, 49);
+		backBtn.loadGraphic("assets/buttons.png", false, 190, 49);
 		backBtn.x = (FlxG.width - backBtn.width) * .5;
 		add(backBtn);
 	}

@@ -87,7 +87,7 @@ class ObjectPool
 		var block:FlxSprite = new FlxSprite();
 		block.solid = _solid;
 		block.immovable = true;
-		block.loadGraphic(_tileMap, false, false, TILE_WIDTH, TILE_HEIGHT, false);
+		block.loadGraphic(_tileMap, false, TILE_WIDTH, TILE_HEIGHT, false);
 		_pool.unshift(block);
 		
 		// make pool bigger

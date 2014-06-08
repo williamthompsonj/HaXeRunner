@@ -100,7 +100,11 @@ class PlayState extends FlxState
 		FlxG.worldBounds.setSize(TILE_WIDTH * 100000, 1000);
 		
 		// background music
+		#if flash
 		FlxG.sound.playMusic("assets/Chip Bit Danger.mp3");
+		#else
+		FlxG.sound.playMusic("assets/Chip Bit Danger.ogg");
+		#end
 		
 		// setup background image
 		setupBg();
@@ -143,8 +147,8 @@ class PlayState extends FlxState
 	{
 		_bgImg1 = new FlxSprite();
 		_bgImg2 = new FlxSprite();
-		_bgImg1.loadGraphic("assets/background.png", false, false, 1024, 512);
-		_bgImg2.loadGraphic("assets/background.png", false, false, 1024, 512);
+		_bgImg1.loadGraphic("assets/background.png", false, 1024, 512);
+		_bgImg2.loadGraphic("assets/background.png", false, 1024, 512);
 		_bgImgGrp = new FlxGroup();
 		
 		this.add(_bgImgGrp);
@@ -156,7 +160,7 @@ class PlayState extends FlxState
 	{
 		// make a player sprite
 		_player = new FlxSprite();
-		_player.loadGraphic("assets/sprites.png", false, true, 70, 100);
+		_player.loadGraphic("assets/sprites.png", false, 70, 100);
 		
 		_startDistance = Std.int(_player.x);
 		
@@ -327,12 +331,14 @@ class PlayState extends FlxState
 	
 	override public function update():Void
 	{
+		#if !(android || blackberry || iphone || ios || mobile)
 		// check if player hit keyboard reset key
 		if (FlxG.keys.anyJustReleased(["R"]))
 		{
 			onReset();
 			return;
 		}
+		#end
 		
 		// check if player fell off the screen
 		if(_player.y > FlxG.height)
@@ -412,9 +418,11 @@ class PlayState extends FlxState
 		// make player go faster as they go farther in j curve
 		_player.maxVelocity.x = BASE_SPEED + Std.int(_player.x*.05);
 		
-		//TODO: macro to replace this with screen touch/mouse click indicator
-		//to support touch devices
+		#if (android || blackberry || iphone || mobile)
+		_jumpPressed = FlxG.mouse.pressed;
+		#else
 		_jumpPressed = FlxG.keys.anyPressed(["UP", "W"]);
+		#end
 		
 		if (_jump != -1 && _jumpPressed)
 		{
@@ -666,13 +674,21 @@ class PlayState extends FlxState
 	{
 		if (_sfxDie)
 		{
+			#if flash
 			FlxG.sound.play("assets/goblin-9.mp3");
+			#else
+			FlxG.sound.play("assets/goblin-9.ogg");
+			#end
 			_sfxDie = false;
 		}
 	}
 	
 	private inline function sfxJump():Void
 	{
+		#if flash
 		FlxG.sound.play("assets/goblin-1.mp3");
+		#else
+		FlxG.sound.play("assets/goblin-1.ogg");
+		#end
 	}
 }
