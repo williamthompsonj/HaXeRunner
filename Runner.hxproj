@@ -2,50 +2,53 @@
 <project version="2">
   <!-- Output SWF options -->
   <output>
-    <movie outputType="CustomBuild" />
+    <movie outputType="Application" />
     <movie input="" />
     <movie path="Project.xml" />
     <movie fps="60" />
-    <movie width="640" />
-    <movie height="480" />
-    <movie version="0" />
+    <movie width="400" />
+    <movie height="300" />
+    <movie version="3" />
     <movie minorVersion="0" />
-    <movie platform="Lime" />
-    <movie background="000000" />
+    <movie platform="NME" />
+    <movie background="0000FF" />
     <movie preferredSDK="Haxe 3.0.0;3.0.0;" />
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
-    <class path="C:\HaxeToolkit\haxe\lib\flixel\4,2,1" />
-    <class path="C:\HaxeToolkit\haxe\lib\lime\2,9,1" />
-    <class path="C:\HaxeToolkit\haxe\lib\openfl\3,6,1" />
     <class path="source" />
-    <class path="C:\HaxeToolkit\haxe\lib\openfl\3,6,1\extern" />
-    <class path="bin\flash\haxe" />
+    <class path="C:\HaxeToolkit\haxe\lib\openfl\1,0,5\" />
+    <class path="C:\HaxeToolkit\haxe\lib\flixel\git\" />
+    <class path="export\flash\haxe" />
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="flixel=4.2.1&#xA;lime=2.9.1&#xA;openfl=3.6.1&#xA;HXCPP_QUIET&#xA;openfl-next&#xA;FLX_NO_FOCUS_LOST_SCREEN&#xA;FLX_NO_GAMEPAD&#xA;tools=2.9.1&#xA;FLX_NO_DEBUG&#xA;no-compilation&#xA;NAPE_RELEASE_BUILD&#xA;openfl-flash&#xA;FLX_NO_SOUND_TRAY&#xA;FLX_NO_NATIVE_CURSOR&#xA;web&#xA;display" />
+    <option directives="FLX_NO_FOCUS_LOST_SCREEN&#xA;tools=1&#xA;openfl_ver=1.0.5&#xA;openfl&#xA;FLX_NO_SOUND_TRAY&#xA;display&#xA;web" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
     <option mainClass="ApplicationMain" />
     <option enabledebug="False" />
-    <option additional="--macro flixel.system.macros.FlxDefines.run()&#xA;-swf-version 12" />
+    <option additional="--no-output&#xA;-swf-version 11.2&#xA;#--remap nme:flash" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>
-    <!-- example: <library name="..." /> -->
+    <library name="openfl" />
+    <library name="flixel" />
   </haxelib>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>
     <compile path="Source\TestDrawRect.hx" />
   </compileTargets>
+  <!-- Assets to embed into the output SWF -->
+  <library>
+    <!-- example: <asset path="..." id="..." update="..." glyphs="..." mode="..." place="..." sharepoint="..." /> -->
+  </library>
   <!-- Paths to exclude from the Project Explorer tree -->
   <hiddenPaths>
-    <hidden path="obj" />
+    <!-- example: <hidden path="..." /> -->
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand>"$(CompilerPath)/haxelib" run lime build "$(OutputFile)" $(TargetBuild) -$(BuildConfig) -Dfdb</preBuildCommand>
+  <preBuildCommand />
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->
